@@ -1,0 +1,20 @@
+version: 0.0
+os: linux
+permissions:
+  - object: /home/ssm-user/
+    owner: ssm-user
+    group: ssm-user
+    mode: 644
+    type:
+      - directory
+      - file
+files:
+  - source: /
+    destination: /home/ssm-user/aws-codedeploy-ec2-demo
+hooks:
+  ApplicationStop:
+    - location: scripts/applicationStop.sh
+  ApplicationStart:
+    - location: scripts/applicationStart.sh
+      timeout: 100
+
